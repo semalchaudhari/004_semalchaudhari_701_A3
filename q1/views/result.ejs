@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Registration Result</title>
+</head>
+
+<body>
+
+
+<h1 style="text-align: center;">
+    Registration Successful
+</h1>
+
+
+<table
+    border="1"
+    cellpadding="10"
+    cellspacing="0"
+    align="center"
+    width="80%"
+>
+
+    <tr style="background-color: #eeeeee;">
+        <th>Field</th>
+        <th>Data</th>
+    </tr>
+
+
+    <!-- Username -->
+    <tr>
+        <td><b>Username</b></td>
+        <td>
+            <%= userData.username %>
+        </td>
+    </tr>
+
+
+    <!-- Email -->
+    <tr>
+        <td><b>Email</b></td>
+        <td>
+            <%= userData.email %>
+        </td>
+    </tr>
+
+
+    <!-- Gender -->
+    <tr>
+        <td><b>Gender</b></td>
+        <td>
+            <%= userData.gender %>
+        </td>
+    </tr>
+
+
+    <!-- Hobbies -->
+    <tr>
+        <td><b>Hobbies</b></td>
+        <td>
+            <%= userData.hobbies.join(', ') %>
+        </td>
+    </tr>
+
+
+    <!-- Profile Picture -->
+    <tr>
+        <td><b>Profile Picture</b></td>
+
+        <td>
+
+            <img
+                src="/uploads/profilepic/<%= userData.profilePic.filename %>"
+                alt="Profile Picture"
+                width="120"
+                height="120"
+            >
+
+            <br><br>
+
+            <a
+                href="/download/profile/<%= userData.profilePic.filename %>"
+            >
+                Download Profile Picture
+            </a>
+
+        </td>
+    </tr>
+
+
+    <!-- Other Pictures -->
+    <tr>
+
+        <td><b>Other Pictures</b></td>
+
+        <td>
+
+            <% userData.otherPics.forEach(pic => { %>
+
+                <div style="display: inline-block; margin: 10px;">
+
+                    <img
+                        src="/uploads/other/<%=pic.filename %>"
+                        alt="Other Picture"
+                        width="120"
+                        height="120"
+                    >
+
+                    <br><br>
+
+                    <a
+                        href="/download/other/<%=pic.filename %>"
+                    >
+                        Download
+                    </a>
+
+                </div>
+
+            <% }) %>
+
+        </td>
+
+    </tr>
+
+</table>
+
+
+<br><br>
+
+
+<div style="text-align: center;">
+
+    <a href="/">
+        Register Another User
+    </a>
+
+</div>
+
+
+</body>
+
+</html>

@@ -10,10 +10,10 @@ app.use(express.json());
 
 app.use('/api', studentRoutes);
 
-// Sync database and start server
+// Sync model tables and start server
 sequelize.sync()
   .then(() => {
-    console.log('Database synced successfully.');
+    console.log('PostgreSQL synced successfully.');
     app.listen(5000, () => console.log('Server running on port 5000'));
   })
-  .catch((err) => console.error('Failed to sync db: ', err));
+  .catch((err) => console.error('Failed to sync PostgreSQL: ', err));
